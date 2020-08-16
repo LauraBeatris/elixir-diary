@@ -11,13 +11,10 @@ defmodule Diary.CLI do
   @doc since: "0.1.0"
   @spec greeting :: nil
   def greeting do
-    name = Diary.get_user_name
-    IO.puts(" ")
-
     today = Timex.today
     formatted_date = "#{Timex.month_name(today.month)} #{Timex.format!(today, "{D}, {YYYY}")}"
 
-    IO.puts("#{name}, Welcome to your diary! 📖")
+    IO.puts("Welcome to your diary! 📖")
     IO.puts("Today is #{formatted_date}")
   end
 
@@ -33,6 +30,8 @@ defmodule Diary.CLI do
     IO.puts(" ")
 
     question_result = IO.gets("Enter the choosed option: ") |> String.trim
+
+    IO.puts(" ")
 
     if (question_result == read_notes_answer()) do
       Diary.CLI.read_notes
@@ -66,13 +65,8 @@ defmodule Diary.CLI do
     notes = Diary.load_notes
 
     if (length(notes) <= 0) do
-      Diary.CLI.create_note
-      Diary.CLI.read_notes
+      IO.puts("You don't have any notes")
     end
-
-    IO.puts(" ")
-    IO.puts("---- That's your notes 📝 ----")
-    IO.puts(" ")
 
     for note <- notes do
       IO.puts(note.value)
@@ -84,7 +78,6 @@ defmodule Diary.CLI do
     of the CLI logic
   """
   @doc since: "0.1.0"
-  @spec main :: nil
   def main(_) do
     Diary.CLI.greeting
 
