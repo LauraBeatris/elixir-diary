@@ -9,7 +9,7 @@ defmodule Diary.CLI do
     Outputs a greeting to the user
   """
   @doc since: "0.1.0"
-  @spec greeting :: nil
+  @spec greeting() :: :ok
   def greeting do
     today = Timex.today
     formatted_date = "#{Timex.month_name(today.month)} #{Timex.format!(today, "{D}, {YYYY}")}"
@@ -22,7 +22,7 @@ defmodule Diary.CLI do
     Outputs a menu to the user
   """
   @doc since: "0.1.0"
-  @spec menu :: nil
+  @spec menu() :: :ok
   def menu do
     IO.puts("---- Menu 🕹 | Choose an option ----")
     IO.puts(" ")
@@ -48,7 +48,7 @@ defmodule Diary.CLI do
     Gets the input of the note value and creates a note
   """
   @doc since: "0.1.0"
-  @spec create_note :: Note
+  @spec create_note() :: :ok
   def create_note do
     note_value = IO.gets("Enter a note: ") |> String.trim
 
@@ -57,10 +57,10 @@ defmodule Diary.CLI do
 
   @doc """
     Loads the notes from the filesystem
-    and outputs it to
+    and outputs it to the user
   """
   @doc since: "0.1.0"
-  @spec read_notes :: nil
+  @spec read_notes() :: [any()]
   def read_notes do
     notes = Diary.load_notes
 

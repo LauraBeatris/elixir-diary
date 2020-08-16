@@ -10,12 +10,11 @@ defmodule Note do
     value: ""
   ]
 
-  @spec new(String.t()) :: Note
+  @spec new(value: String.t()) :: %Note{}
   def new(value) do
     %Note{value: value}
   end
 
-  @spec update(Note, String.t()) :: Note
   def update(note, value) do
     %Note{note | value: value}
   end
