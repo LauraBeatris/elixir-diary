@@ -12,15 +12,14 @@
 [![Forks](https://img.shields.io/github/forks/LauraBeatris/elixir-diary?color=%234B88D5&style=flat-square)](https://github.com/LauraBeatris/elixir-diary/network/members)
 [![Contributors](https://img.shields.io/github/contributors/LauraBeatris/elixir-diary?color=4B88D5&style=flat-square)](https://github.com/LauraBeatris/elixir-diary/graphs/contributors)
 
-
-<p align="center">
-   <a href="https://laurabeatris.github.io/elixir-diary/Diary.html">Check out the docs</a>
-</p>
-
-
 ---
 <p align="center">
    <img src="./.github/docs/cli-example.gif" width="500"/>
+</p>
+
+
+<p align="center">
+   <a href="https://laurabeatris.github.io/elixir-diary/Diary.html">Check out the docs</a>
 </p>
 
 ---
