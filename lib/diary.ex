@@ -12,7 +12,7 @@ defmodule Diary do
     Gets the user name via an input
   """
   @doc since: "0.1.0"
-  @spec get_user_name() :: String.t()
+  @spec get_user_name :: String.t()
   def get_user_name do
     IO.gets("Write your name: ") |> String.trim
   end
@@ -21,17 +21,13 @@ defmodule Diary do
     Loads the notes from the file system
   """
   @doc since: "0.1.0"
-  @spec load_notes() :: list(Note)
-  def load_notes() do
-    try do
-      case File.read(notes_filesystem_path()) do
-        { :ok, binary } -> :erlang.binary_to_term(binary)
-        |> Enum.map(&(Poison.decode!(&1, as: %Note{value: ""})))
+  @spec load_notes :: list(Note)
+  def load_notes do
+    case File.read(notes_filesystem_path()) do
+      { :ok, binary } -> :erlang.binary_to_term(binary)
+      |> Enum.map(&(Poison.decode!(&1, as: %Note{value: ""})))
 
-        { :error, reason } -> raise reason
-      end
-    rescue
-      error in RuntimeError -> IO.puts("An error occured: #{error.message}")
+      { :error, _reason } -> []
     end
   end
 
@@ -59,19 +55,5 @@ defmodule Diary do
   def create_note(value) do
     note = Poison.encode!(Note.new(value))
     Diary.save_note(note)
-  end
-
-  @doc """
-    Loads the notes from the file system and read
-    them on a friendly format
-  """
-  @doc since: "0.1.0"
-  @spec read_notes() :: nil
-  def read_notes do
-    notes = Diary.load_notes
-
-    for note <- notes do
-      IO.puts(note.value)
-    end
   end
 end
