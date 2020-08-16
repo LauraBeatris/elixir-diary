@@ -12,6 +12,15 @@ defmodule Diary.MixProject do
         plt_add_apps: [:ex_unit, :mix],
         plt_file: {:no_warn, "priv/plts/dialyzer.plt"},
       ],
+
+      # Docs
+      name: "Elixir Diary",
+      source_url: "https://github.com/LauraBeatris/elixir-diary",
+      docs: [
+        main: "Diary", # The main page in the docs
+        logo: ".github/docs/logo.png",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -30,7 +39,10 @@ defmodule Diary.MixProject do
 
       # Utils
       {:poison, "~> 3.1"},
-      {:timex, "~> 3.5"}
+      {:timex, "~> 3.5"},
+
+      # Docs
+      {:ex_doc, "~> 0.22", only: :dev, runtime: false},
     ]
   end
 end
