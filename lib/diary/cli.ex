@@ -33,11 +33,11 @@ defmodule Diary.CLI do
 
     IO.puts(" ")
 
-    if (question_result == read_notes_answer()) do
+    if question_result == read_notes_answer() do
       Diary.CLI.read_notes
     end
 
-    if (question_result == create_note_answer()) do
+    if question_result == create_note_answer() do
       Diary.CLI.create_note
     end
 
@@ -64,7 +64,7 @@ defmodule Diary.CLI do
   def read_notes do
     notes = Diary.load_notes
 
-    if (length(notes) <= 0) do
+    if length(notes) <= 0 do
       IO.puts("You don't have any notes")
     end
 
