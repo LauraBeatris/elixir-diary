@@ -38,14 +38,6 @@ Run ``mix deps.get`` to install the dependencies defined in side ``mix.exs``
 
 # :pushpin: Usage
 
-With compiled binary:
-
-```
-$ echo -e "fork\nstar" | ./prepend "Give a "
-Give a fork
-Give a star
-```
-
 Run [mix diary](https://github.com/LauraBeatris/elixir-diary/blob/master/lib/mix/tasks/diary.ex)
 
 ```
