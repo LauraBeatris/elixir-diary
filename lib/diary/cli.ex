@@ -3,16 +3,93 @@ defmodule Diary.CLI do
     Outputs the diary notes on the CLI
   """
 
-  def main(_) do
+  import Diary.CLI.Constants
+
+  @doc """
+    Outputs a greeting to the user
+  """
+  @doc since: "0.1.0"
+  @spec greeting :: nil
+  def greeting do
     name = Diary.get_user_name
+    IO.puts(" ")
 
     today = Timex.today
     formatted_date = "#{Timex.month_name(today.month)} #{Timex.format!(today, "{D}, {YYYY}")}"
 
     IO.puts("#{name}, Welcome to your diary! 📖")
     IO.puts("Today is #{formatted_date}")
+  end
+
+  @doc """
+    Outputs a menu to the user
+  """
+  @doc since: "0.1.0"
+  @spec menu :: nil
+  def menu do
+    IO.puts("---- Menu 🕹 | Choose an option ----")
+    IO.puts(" ")
+    IO.puts("Write #{read_notes_answer()} to read notes and #{create_note_answer()} to create a note")
     IO.puts(" ")
 
-    Diary.read_notes
+    question_result = IO.gets("Enter the choosed option: ") |> String.trim
+
+    if (question_result == read_notes_answer()) do
+      Diary.CLI.read_notes
+    end
+
+    if (question_result == create_note_answer()) do
+      Diary.CLI.create_note
+    end
+
+    IO.puts(" ")
+  end
+
+  @doc """
+    Gets the input of the note value and creates a note
+  """
+  @doc since: "0.1.0"
+  @spec create_note :: Note
+  def create_note do
+    note_value = IO.gets("Enter a note: ") |> String.trim
+
+    Diary.create_note(note_value)
+  end
+
+  @doc """
+    Loads the notes from the filesystem
+    and outputs it to
+  """
+  @doc since: "0.1.0"
+  @spec read_notes :: nil
+  def read_notes do
+    notes = Diary.load_notes
+
+    if (length(notes) <= 0) do
+      Diary.CLI.create_note
+      Diary.CLI.read_notes
+    end
+
+    IO.puts(" ")
+    IO.puts("---- That's your notes 📝 ----")
+    IO.puts(" ")
+
+    for note <- notes do
+      IO.puts(note.value)
+    end
+  end
+
+  @doc """
+    Main function resposible to control the execution
+    of the CLI logic
+  """
+  @doc since: "0.1.0"
+  @spec main :: nil
+  def main(_) do
+    Diary.CLI.greeting
+
+    IO.puts(" ")
+
+    Diary.CLI.menu
   end
 end
