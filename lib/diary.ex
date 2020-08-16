@@ -24,10 +24,10 @@ defmodule Diary do
   @spec load_notes :: list(Note)
   def load_notes do
     case File.read(notes_filesystem_path()) do
-      { :ok, binary } -> :erlang.binary_to_term(binary)
+      {:ok, binary} -> :erlang.binary_to_term(binary)
       |> Enum.map(&(Poison.decode!(&1, as: %Note{value: ""})))
 
-      { :error, _reason } -> []
+      {:error, _reason} -> []
     end
   end
 
