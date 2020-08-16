@@ -22,4 +22,8 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 diary-*.tar
 
+# Notes Binary
 notes
+
+# Dialyzer
+/priv/plts/
