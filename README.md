@@ -4,7 +4,7 @@
 
 # Elixir Diary
 
-> Create and list notes
+> Create and list notes of your diary 
 
 [![Author](https://img.shields.io/badge/author-LauraBeatris-4B88D5?style=flat-square)](https://github.com/LauraBeatris)
 [![Languages](https://img.shields.io/github/languages/count/LauraBeatris/elixir-diary?color=%234B88D5&style=flat-square)](#)
