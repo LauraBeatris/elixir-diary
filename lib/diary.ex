@@ -9,15 +9,6 @@ defmodule Diary do
   import Notes.Constants
 
   @doc """
-    Gets the user name via an input
-  """
-  @doc since: "0.1.0"
-  @spec get_user_name :: String.t()
-  def get_user_name do
-    IO.gets("Write your name: ") |> String.trim
-  end
-
-  @doc """
     Loads the notes from the file system
   """
   @doc since: "0.1.0"
@@ -36,6 +27,7 @@ defmodule Diary do
     Saves a diary note to the file system
   """
   @doc since: "0.1.0"
+  @spec save_note([{:value, binary()}]) :: :ok
   def save_note(notes) do
     try do
       binary = :erlang.term_to_binary(notes)
@@ -50,7 +42,7 @@ defmodule Diary do
     and saves it to the file system
   """
   @doc since: "0.1.0"
-  @spec create_note(String.t()) :: Note
+  @spec create_note([{:value, binary()}]) :: :ok
   def create_note(value) do
     note = Poison.encode!(Note.new(value))
     existing_notes = Diary.load_notes
