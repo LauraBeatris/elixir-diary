@@ -17,6 +17,7 @@
 <p align="center">
    <img src="./.github/docs/cli-example.gif" width="500"/>
 </p>
+
 ---
 
 
@@ -46,7 +47,7 @@ Give a fork
 Give a star
 ```
 
-Run the mix task ``mix diary``(https://github.com/LauraBeatris/elixir-diary/blob/master/lib/mix/tasks/diary.ex)
+Run [mix diary](https://github.com/LauraBeatris/elixir-diary/blob/master/lib/mix/tasks/diary.ex)
 
 ```
 $ mix diary
