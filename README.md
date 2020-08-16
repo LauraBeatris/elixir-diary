@@ -11,7 +11,6 @@
 [![Stars](https://img.shields.io/github/stars/LauraBeatris/elixir-diary?color=4B88D5&style=flat-square)](https://github.com/LauraBeatris/elixir-diary/stargazers)
 [![Forks](https://img.shields.io/github/forks/LauraBeatris/elixir-diary?color=%234B88D5&style=flat-square)](https://github.com/LauraBeatris/elixir-diary/network/members)
 [![Contributors](https://img.shields.io/github/contributors/LauraBeatris/elixir-diary?color=4B88D5&style=flat-square)](https://github.com/LauraBeatris/elixir-diary/graphs/contributors)
-[![CI Status](https://img.shields.io/github/workflow/status/LauraBeatris/elixir-diary/CI?label=CI&style=flat-square)](https://github.com/LauraBeatris/elixir-diary/actions)
 
 ---
 <p align="center">
