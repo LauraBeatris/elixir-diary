@@ -36,10 +36,9 @@ defmodule Diary do
     Saves a diary note to the file system
   """
   @doc since: "0.1.0"
-  @spec save_note(Note) :: :atom
-  def save_note(note) do
+  def save_note(notes) do
     try do
-      binary = :erlang.term_to_binary([note])
+      binary = :erlang.term_to_binary(notes)
       File.write!(notes_filesystem_path(), binary)
     rescue
       error in RuntimeError -> IO.puts("An error ocurred: #{error.message}")
@@ -54,6 +53,9 @@ defmodule Diary do
   @spec create_note(String.t()) :: Note
   def create_note(value) do
     note = Poison.encode!(Note.new(value))
-    Diary.save_note(note)
+    existing_notes = Diary.load_notes
+    |> Enum.map(&(Poison.encode!(&1, as: %Note{value: ""})))
+
+    Diary.save_note(Enum.concat([note], existing_notes))
   end
 end
