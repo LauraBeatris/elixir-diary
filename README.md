@@ -39,7 +39,7 @@
 
 Make sure you have [Elixir](https://elixir-lang.org/) installed. If you're on a Mac, just run ``brew install elixir``
 
-Run ``mix deps.get`` to install the dependencies defined in side ``mix.exs``
+Run ``mix deps.get`` to install the dependencies defined inside ``mix.exs``
 
 # :pushpin: Usage
 
